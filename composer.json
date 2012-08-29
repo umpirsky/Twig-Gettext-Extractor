@@ -1,7 +1,7 @@
 {
     "name": "umpirsky/twig-gettext-extractor",
     "type": "application",
-    "description": "A script to extract translations from twig templates.",
+    "description": "The Twig Gettext Extractor is Poedit friendly tool which extracts translations from twig templates.",
     "license": "MIT",
     "authors": [
         {
