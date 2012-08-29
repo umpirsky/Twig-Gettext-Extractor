@@ -1,0 +1,33 @@
+{
+    "hash": "28abe004b2058019efdb7045bdae243d",
+    "packages": [
+        {
+            "package": "symfony/filesystem",
+            "version": "v2.0.16"
+        },
+        {
+            "package": "twig/extensions",
+            "version": "dev-master",
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "twig/extensions",
+            "version": "dev-master",
+            "source-reference": "v1.0.0-alpha",
+            "commit-date": "1346166263"
+        },
+        {
+            "package": "twig/twig",
+            "version": "v1.9.2"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "twig/extensions": 20
+    }
+}

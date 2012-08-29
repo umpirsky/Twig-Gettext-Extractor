@@ -12,8 +12,8 @@
     "require": {
         "php":                ">=5.3.3",
         "twig/twig":          ">=1.2.0,<2.0-dev",
-        "twig/extensions":    "1.0.*",
-        "symfony/filesystem": "2.1.*"
+        "twig/extensions":    "1.0.x-dev",
+        "symfony/filesystem": "2.0.16"
     },
     "autoload": {
         "psr-0": { "Twig\\Gettext": "." }
