@@ -22,7 +22,7 @@ use Symfony\Component\Routing\RequestContext;
 class UrlGenerator implements UrlGeneratorInterface
 {
     protected $context;
-    
+
     public function generate($name, $parameters = array(), $absolute = false)
     {
     }

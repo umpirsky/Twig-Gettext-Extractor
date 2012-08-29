@@ -7,8 +7,8 @@ friendly tool which extracts translations from twig templates.
 Installation
 ------------
 
-The recommended way to install Twig Gettext Extractor is [through 
-composer](http://getcomposer.org). Just create a `composer.json` file and
+The recommended way to install Twig Gettext Extractor is through
+[composer](http://getcomposer.org). Just create a `composer.json` file and
 run the `composer install` command to install it:
 
     {
@@ -21,7 +21,7 @@ run the `composer install` command to install it:
 Setup
 -----
 
-By default, POEdit does not have the ability to parse Twig templates.
+By default, Poedit does not have the ability to parse Twig templates.
 This can be resolved by adding an additional parser (Edit > Preferences > Parsers)
 with the following options:
 
@@ -35,3 +35,4 @@ with the following options:
 
 <img src="http://i.imgur.com/f9px2.png" />
 
+Now you can update your catalog and Poedit will synchronize it with your twig templates.

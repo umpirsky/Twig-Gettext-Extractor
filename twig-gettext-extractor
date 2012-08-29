@@ -12,7 +12,7 @@
 
 /**
  * Extracts translations from twig templates.
- * 
+ *
  * @author Саша Стаменковић <umpirsky@gmail.com>
  */
 

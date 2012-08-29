@@ -20,7 +20,7 @@ class Filesystem extends \Twig_Loader_Filesystem
 {
     /**
      * Hacked find template to allow loading templates by absolute path.
-     * 
+     *
      * @param string $name template name or absolute path
      */
     protected function findTemplate($name)
@@ -41,7 +41,7 @@ class Filesystem extends \Twig_Loader_Filesystem
                 return $this->cache[$name] = $name;
             }
         }
-        
+
         if (empty($this->cache)) {
             throw new \Twig_Error_Loader(sprintf('Unable to find template "%s" (looked into: %s).', $name, implode(', ', $this->paths)));
         } else {
