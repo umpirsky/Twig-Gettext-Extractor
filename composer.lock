@@ -1,5 +1,5 @@
 {
-    "hash": "537e0ae3f9325e4aea91892fd4148b34",
+    "hash": "4431c52d3ab330eb5be6baeb3add7e74",
     "packages": [
         {
             "package": "symfony/filesystem",
@@ -9,6 +9,30 @@
         },
         {
             "package": "symfony/filesystem",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-RC2",
+            "commit-date": "1345643321"
+        },
+        {
+            "package": "symfony/routing",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/routing",
+            "version": "dev-master",
+            "source-reference": "56fa8f9759e550e98e88602a7f4f3a2abb285d18",
+            "commit-date": "1346222178"
+        },
+        {
+            "package": "symfony/twig-bridge",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/twig-bridge",
             "version": "dev-master",
             "source-reference": "v2.1.0-RC2",
             "commit-date": "1345643321"

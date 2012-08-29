@@ -31,6 +31,9 @@ $twig = new Twig_Environment(new Twig\Gettext\Loader\Filesystem('/'), array(
     'auto_reload' => true
 ));
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
+$twig->addExtension(new Symfony\Bridge\Twig\Extension\RoutingExtension(
+    new Twig\Gettext\Routing\Generator\UrlGenerator()
+));
 
 array_shift($_SERVER['argv']);
 foreach ($_SERVER['argv'] as $arg) {
