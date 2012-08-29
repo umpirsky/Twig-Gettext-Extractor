@@ -1,4 +1,4 @@
 Twig-Gettext-Extractor
 ======================
 
-Extracts translations from twig templates
+Extracts translations from twig templates.

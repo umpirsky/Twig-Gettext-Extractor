@@ -1,0 +1,57 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * This file is part of the Twig Gettext utility.
+ *
+ *  (c) Саша Стаменковић <umpirsky@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+/**
+ * Extracts translations from twig templates.
+ * 
+ * This script should be run from Poedit with parser setup:
+ * - Language: Twig
+ * - Extensions: *.twig
+ * - Command: bin/rebuild-translations --sort-output --force-po -o %o %C %K -L PHP --files %F
+ * - Keywords: -k%k
+ * - Input: %f
+ * - Charset: --from-code=%c
+ */
+
+if (file_exists($a = __DIR__.'/../../autoload.php')) {
+    require_once $a;
+} else {
+    require_once __DIR__.'/vendor/autoload.php';
+}
+
+$command = 'xgettext --default-domain=messages';
+$fileListStart = false;
+$cacheDir = '/tmp/cache/'.uniqid();
+
+$twig = new Twig_Environment(new Twig\Gettext\Loader\Filesystem('/'), array(
+    'cache' => $cacheDir,
+    'auto_reload' => true
+));
+$twig->addExtension(new Twig_Extensions_Extension_I18n());
+
+array_shift($_SERVER['argv']);
+foreach ($_SERVER['argv'] as $arg) {
+    if ('--files' == $arg) {
+        $fileListStart = true;
+    } else if ($fileListStart) {
+        $templateName = getcwd().DIRECTORY_SEPARATOR.$arg;
+        $twig->loadTemplate($templateName);
+        $command .= ' '.$twig->getCacheFilename($templateName);
+    } else {
+        $command .= ' '.$arg;
+    }
+}
+
+exec($command);
+
+$filesystem = new Symfony\Component\Filesystem\Filesystem();
+$filesystem->remove($cacheDir);
