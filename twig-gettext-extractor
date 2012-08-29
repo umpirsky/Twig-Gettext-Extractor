@@ -13,13 +13,7 @@
 /**
  * Extracts translations from twig templates.
  * 
- * This script should be run from Poedit with parser setup:
- * - Language: Twig
- * - Extensions: *.twig
- * - Command: bin/rebuild-translations --sort-output --force-po -o %o %C %K -L PHP --files %F
- * - Keywords: -k%k
- * - Input: %f
- * - Charset: --from-code=%c
+ * @author Саша Стаменковић <umpirsky@gmail.com>
  */
 
 if (file_exists($a = __DIR__.'/../../autoload.php')) {
