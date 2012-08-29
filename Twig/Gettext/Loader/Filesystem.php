@@ -25,10 +25,19 @@ class Filesystem extends \Twig_Loader_Filesystem
      */
     protected function findTemplate($name)
     {
-        try {
-            parent::findTemplate($name);
-        } catch (\Twig_Error_Loader $e) {
-            if (is_file($name)) {
+         // normalize name
+        $name = preg_replace('#/{2,}#', '/', strtr($name, '\\', '/'));
+
+        if (isset($this->cache[$name])) {
+            return $this->cache[$name];
+        }
+
+        $this->validateName($name);
+
+        foreach ($this->paths as $path) {
+            if (is_file($path.'/'.$name)) {
+                return $this->cache[$name] = $path.'/'.$name;
+            } elseif (is_file($name)) {
                 return $this->cache[$name] = $name;
             }
         }
