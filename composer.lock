@@ -1,9 +1,17 @@
 {
-    "hash": "28abe004b2058019efdb7045bdae243d",
+    "hash": "537e0ae3f9325e4aea91892fd4148b34",
     "packages": [
         {
             "package": "symfony/filesystem",
-            "version": "v2.0.16"
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/filesystem",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-RC2",
+            "commit-date": "1345643321"
         },
         {
             "package": "twig/extensions",
@@ -19,15 +27,23 @@
         },
         {
             "package": "twig/twig",
-            "version": "v1.9.2"
+            "version": "dev-master",
+            "alias-pretty-version": "1.9.x-dev",
+            "alias-version": "1.9.9999999.9999999-dev"
+        },
+        {
+            "package": "twig/twig",
+            "version": "dev-master",
+            "source-reference": "300b26cf8eee5645bb3b07e83fd81760ab452768",
+            "commit-date": "1346219047"
         }
     ],
     "packages-dev": null,
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
-    "stability-flags": {
-        "twig/extensions": 20
-    }
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
 }
