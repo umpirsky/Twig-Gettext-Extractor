@@ -1,4 +1,4 @@
-Twig-Gettext-Extractor
+Twig Gettext Extractor
 ======================
 
-Extracts translations from twig templates.
+The Twig Gettext Extractor tool extracts translations from twig templates.
