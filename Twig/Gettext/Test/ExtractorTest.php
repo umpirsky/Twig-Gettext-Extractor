@@ -91,9 +91,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         $extractor = new Extractor($this->twig);
 
         $extractor->addTemplate(__DIR__.'/Fixtures/twig/empty.twig');
-        foreach ($this->getGettextParameters() as $parameter) {
-            $extractor->addGettextParameter($parameter);
-        }
+        $extractor->setGettextParameters($this->getGettextParameters());
 
         $extractor->extract();
 

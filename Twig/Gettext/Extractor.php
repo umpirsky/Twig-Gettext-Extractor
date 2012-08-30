@@ -62,6 +62,11 @@ class Extractor
         $this->parameters[] = $parameter;
     }
 
+    public function setGettextParameters(array $parameters)
+    {
+        $this->parameters = $parameters;
+    }
+
     public function extract()
     {
         $command = 'xgettext';
