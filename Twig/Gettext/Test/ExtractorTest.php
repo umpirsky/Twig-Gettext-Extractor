@@ -23,7 +23,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
      * @var type \Twig_Environment
      */
     protected $twig;
-    
+
     protected function setUp()
     {
         $this->twig = new \Twig_Environment(new Filesystem('/'), array(
@@ -32,7 +32,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         ));
         $this->twig->addExtension(new \Twig_Extensions_Extension_I18n());
     }
-    
+
     /**
      * @dataProvider testExtractDataProvider
      * @runInSeparateProcess
@@ -40,17 +40,17 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
     public function testExtract(array $templates, array $parameters)
     {
         $extractor = new Extractor($this->twig);
-        
+
         foreach ($templates as $template) {
             $extractor->addTemplate($template);
         }
         foreach ($parameters as $parameter) {
             $extractor->addGettextParameter($parameter);
         }
-        
+
         $extractor->extract();
     }
-    
+
     public static function testExtractDataProvider()
     {
         return array(
@@ -75,12 +75,12 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
-    
+
     private static function getPotFile()
     {
-        return __DIR__.'/Fixtures/gettext/messages.pot';
+        return __DIR__.'/Fixtures/messages.pot';
     }
-    
+
     protected function tearDown()
     {
         if (file_exists(self::getPotFile())) {
