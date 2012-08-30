@@ -42,9 +42,15 @@ class Extractor
     public function __construct(\Twig_Environment $environment)
     {
         $this->environment = $environment;
-        $this->templates = array();
+        $this->reset();
     }
     
+    protected function reset()
+    {
+        $this->templates = array();
+        $this->parameters = array();
+    }
+        
     public function addTemplate($path)
     {
         $this->environment->loadTemplate($path);
@@ -58,11 +64,17 @@ class Extractor
     
     public function extract()
     {
-        $command = 'xgettext --default-domain=messages';        
-        $command .= ' '.join(' ', $this->parameters);        
+        $command = 'xgettext';
+        $command .= ' '.join(' ', $this->parameters);
         $command .= ' '.join(' ', $this->templates);
         
-        exec($command);
+        $output = $status = null;
+        exec($command, $output, $status);
+        if (0 !== $status) {
+            throw new \RuntimeException(sprintf('Gettext command "%s" failed', $command));
+        }
+        
+        $this->reset();
     }
     
     public function __destruct()
