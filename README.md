@@ -1,4 +1,4 @@
-Twig Gettext Extractor
+Twig Gettext Extractor [![Build Status](https://secure.travis-ci.org/umpirsky/Twig-Gettext-Extractor.png?branch=master)](http://travis-ci.org/umpirsky/Twig-Gettext-Extractor)
 ======================
 
 The Twig Gettext Extractor is [Poedit](http://www.poedit.net/download.php)
