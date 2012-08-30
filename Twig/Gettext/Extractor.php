@@ -24,59 +24,59 @@ class Extractor
      * @var \Twig_Environment
      */
     protected $environment;
-    
+
     /**
      * Template cached file names.
-     * 
+     *
      * @var string[]
      */
     protected $templates;
-    
+
     /**
      * Gettext parameters.
-     * 
+     *
      * @var string[]
      */
     protected $parameters;
-    
+
     public function __construct(\Twig_Environment $environment)
     {
         $this->environment = $environment;
         $this->reset();
     }
-    
+
     protected function reset()
     {
         $this->templates = array();
         $this->parameters = array();
     }
-        
+
     public function addTemplate($path)
     {
         $this->environment->loadTemplate($path);
         $this->templates[] = $this->environment->getCacheFilename($path);
     }
-    
+
     public function addGettextParameter($parameter)
     {
         $this->parameters[] = $parameter;
     }
-    
+
     public function extract()
     {
         $command = 'xgettext';
         $command .= ' '.join(' ', $this->parameters);
         $command .= ' '.join(' ', $this->templates);
-        
+
         $output = $status = null;
         exec($command, $output, $status);
         if (0 !== $status) {
             throw new \RuntimeException(sprintf('Gettext command "%s" failed', $command));
         }
-        
+
         $this->reset();
     }
-    
+
     public function __destruct()
     {
         $filesystem = new Filesystem();
