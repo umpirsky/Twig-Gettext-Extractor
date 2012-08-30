@@ -32,14 +32,14 @@ $twig->addExtension(new Symfony\Bridge\Twig\Extension\RoutingExtension(
 ));
 
 array_shift($_SERVER['argv']);
-$fileListStart = false;
+$addTemplate = false;
 
 $extractor = new Twig\Gettext\Extractor($twig);
 
 foreach ($_SERVER['argv'] as $arg) {
     if ('--files' == $arg) {
-        $fileListStart = true;
-    } else if ($fileListStart) {
+        $addTemplate = true;
+    } else if ($addTemplate) {
         $extractor->addTemplate(getcwd().DIRECTORY_SEPARATOR.$arg);
     } else {
         $extractor->addGettextParameter($arg);
