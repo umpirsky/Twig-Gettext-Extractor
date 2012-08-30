@@ -20,19 +20,26 @@ use Twig\Gettext\Loader\Filesystem;
 class ExtractorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider testExtractDataProvider
-     * @param array $templates
-     * @param array $parameters
+     * @var type \Twig_Environment
      */
-    public function testExtract(array $templates, array $parameters)
+    protected $twig;
+    
+    protected function setUp()
     {
-        $twig = new \Twig_Environment(new Filesystem('/'), array(
+        $this->twig = new \Twig_Environment(new Filesystem('/'), array(
             'cache'       => '/tmp/cache/'.uniqid(),
             'auto_reload' => true
         ));
-        $twig->addExtension(new \Twig_Extensions_Extension_I18n());
-        
-        $extractor = new Extractor($twig);
+        $this->twig->addExtension(new \Twig_Extensions_Extension_I18n());
+    }
+    
+    /**
+     * @dataProvider testExtractDataProvider
+     * @runInSeparateProcess
+     */
+    public function testExtract(array $templates, array $parameters)
+    {
+        $extractor = new Extractor($this->twig);
         
         foreach ($templates as $template) {
             $extractor->addTemplate($template);
@@ -40,7 +47,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         foreach ($parameters as $parameter) {
             $extractor->addGettextParameter($parameter);
         }
-
+        
         $extractor->extract();
     }
     
@@ -54,24 +61,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
                 ),
                 array(
                     '--sort-output',
-                    '--force-po',
-                    '-o',
-                    __DIR__.'/Fixtures/gettext/messages.pot',
-                    '--from-code=utf-8',
-                    '-k_',
-                    '-kgettext',
-                    '-kgettext_noop',
-                    '-L',
-                    'PHP',
-                )
-            ),
-            array(
-                array(
-                    __DIR__.'/Fixtures/twig/foo.twig',
-                    __DIR__.'/Fixtures/twig/bar.twig',
-                ),
-                array(
-                    '--sort-output',
+                    '--omit-header',
                     '--force-po',
                     '-o',
                     __DIR__.'/Fixtures/gettext/messages.pot',
