@@ -1,3 +1,7 @@
 language: php
+
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install
+
 php: 5.3
-script: phpunit
