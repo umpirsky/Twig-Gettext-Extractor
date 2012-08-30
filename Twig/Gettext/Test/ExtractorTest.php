@@ -76,17 +76,8 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
                     __DIR__.'/Fixtures/twig/bar.twig',
                 ),
                 array(
-                    '--sort-output',
-                    '--omit-header',
-                    '--force-po',
                     '-o',
                     self::getPotFile(),
-                    '--from-code=utf-8',
-                    '-k_',
-                    '-kgettext',
-                    '-kgettext_noop',
-                    '-L',
-                    'PHP',
                 ),
                 array(
                     'Hello %name%!',
