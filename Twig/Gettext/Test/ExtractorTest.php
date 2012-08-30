@@ -57,7 +57,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
 
         $extractor->extract();
 
-        $catalog = $this->loader->load(self::getPotFile(), null);
+        $catalog = $this->loader->load($this->getPotFile(), null);
 
         foreach ($messages as $message) {
             $this->assertTrue(
@@ -67,18 +67,15 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public static function testExtractDataProvider()
+    public function testExtractDataProvider()
     {
         return array(
             array(
                 array(
-                    __DIR__.'/Fixtures/twig/foo.twig',
-                    __DIR__.'/Fixtures/twig/bar.twig',
+                    __DIR__.'/Fixtures/twig/singular.twig',
+                    __DIR__.'/Fixtures/twig/plural.twig',
                 ),
-                array(
-                    '-o',
-                    self::getPotFile(),
-                ),
+                $this->getGettextParameters(),
                 array(
                     'Hello %name%!',
                     'Hello World!',
@@ -89,15 +86,40 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    private static function getPotFile()
+    public function testExtractNoTranslations()
+    {
+        $extractor = new Extractor($this->twig);
+
+        $extractor->addTemplate(__DIR__.'/Fixtures/twig/empty.twig');
+        foreach ($this->getGettextParameters() as $parameter) {
+            $extractor->addGettextParameter($parameter);
+        }
+
+        $extractor->extract();
+
+        $catalog = $this->loader->load($this->getPotFile(), null);
+
+        $this->assertEmpty($catalog->all('messages'));
+    }
+
+    private function getPotFile()
     {
         return __DIR__.'/Fixtures/messages.pot';
     }
 
+    private function getGettextParameters()
+    {
+        return array(
+            '--force-po',
+            '-o',
+            $this->getPotFile(),
+        );
+    }
+
     protected function tearDown()
     {
-        if (file_exists(self::getPotFile())) {
-            unlink(self::getPotFile());
+        if (file_exists($this->getPotFile())) {
+            unlink($this->getPotFile());
         }
     }
 }
