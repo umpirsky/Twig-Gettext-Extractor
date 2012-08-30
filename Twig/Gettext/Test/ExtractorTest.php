@@ -51,7 +51,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         $extractor->extract();
     }
     
-    public function testExtractDataProvider()
+    public static function testExtractDataProvider()
     {
         return array(
             array(
@@ -64,7 +64,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
                     '--omit-header',
                     '--force-po',
                     '-o',
-                    __DIR__.'/Fixtures/gettext/messages.pot',
+                    self::getPotFile(),
                     '--from-code=utf-8',
                     '-k_',
                     '-kgettext',
@@ -74,5 +74,17 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
                 )
             ),
         );
+    }
+    
+    private static function getPotFile()
+    {
+        return __DIR__.'/Fixtures/gettext/messages.pot';
+    }
+    
+    protected function tearDown()
+    {
+        if (file_exists(self::getPotFile())) {
+            unlink(self::getPotFile());
+        }
     }
 }
