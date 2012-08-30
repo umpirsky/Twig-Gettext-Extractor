@@ -13,6 +13,7 @@ namespace Twig\Gettext\Test;
 
 use Twig\Gettext\Extractor;
 use Twig\Gettext\Loader\Filesystem;
+use Symfony\Component\Translation\Loader\PoFileLoader;
 
 /**
  * @author Саша Стаменковић <umpirsky@gmail.com>
@@ -20,9 +21,14 @@ use Twig\Gettext\Loader\Filesystem;
 class ExtractorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var type \Twig_Environment
+     * @var \Twig_Environment
      */
     protected $twig;
+
+    /**
+     * @var PoFileLoader
+     */
+    protected $loader;
 
     protected function setUp()
     {
@@ -31,13 +37,14 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
             'auto_reload' => true
         ));
         $this->twig->addExtension(new \Twig_Extensions_Extension_I18n());
+
+        $this->loader = new PoFileLoader();
     }
 
     /**
      * @dataProvider testExtractDataProvider
-     * @runInSeparateProcess
      */
-    public function testExtract(array $templates, array $parameters)
+    public function testExtract(array $templates, array $parameters, array $messages)
     {
         $extractor = new Extractor($this->twig);
 
@@ -49,6 +56,15 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         }
 
         $extractor->extract();
+
+        $catalog = $this->loader->load(self::getPotFile(), null);
+
+        foreach ($messages as $message) {
+            $this->assertTrue(
+                $catalog->has($message),
+                sprintf('Message "%s" not found in catalog.', $message)
+            );
+        }
     }
 
     public static function testExtractDataProvider()
@@ -71,7 +87,13 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
                     '-kgettext_noop',
                     '-L',
                     'PHP',
-                )
+                ),
+                array(
+                    'Hello %name%!',
+                    'Hello World!',
+                    'Hey %name%, I have one apple.',
+                    'Hey %name%, I have %count% apples.',
+                ),
             ),
         );
     }
