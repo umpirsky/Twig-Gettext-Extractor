@@ -12,9 +12,8 @@ The recommended way to install Twig Gettext Extractor is through
 run the `composer install` command to install it:
 
     {
-        "minimum-stability": "dev",
         "require": {
-            "umpirsky/twig-gettext-extractor": "1.0.*"
+            "umpirsky/twig-gettext-extractor": "1.1.*"
         }
     }
 
