@@ -34,4 +34,17 @@ with the following options:
 
 <img src="http://i.imgur.com/f9px2.png" />
 
-Now you can update your catalog and Poedit will synchronize it with your twig templates.
+Now you can update your catalog and Poedit will synchronize it with your twig
+templates.
+
+## Tests
+
+To run the test suite, you need [composer](http://getcomposer.org) and
+[PHPUnit](https://github.com/sebastianbergmann/phpunit).
+
+    $ composer install --dev
+    $ phpunit
+
+## License
+
+Silex is licensed under the MIT license
