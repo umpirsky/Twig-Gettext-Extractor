@@ -73,10 +73,15 @@ class Extractor
         $command .= ' '.join(' ', $this->parameters);
         $command .= ' '.join(' ', $this->templates);
 
-        $output = $status = null;
-        exec($command, $output, $status);
-        if (0 !== $status) {
-            throw new \RuntimeException(sprintf('Gettext command "%s" failed', $command));
+        $error = 0;
+        $output = system($command, $error);
+        if (0 !== $error) {
+            throw new \RuntimeException(sprintf(
+                'Gettext command "%s" failed with error code %s and output: %s',
+                $command,
+                $error,
+                $output
+            ));
         }
 
         $this->reset();
