@@ -47,4 +47,4 @@ To run the test suite, you need [composer](http://getcomposer.org) and
 
 ## License
 
-Silex is licensed under the MIT license
+Twig Gettext Extractor is licensed under the MIT license.
