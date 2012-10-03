@@ -30,6 +30,12 @@ $twig->addExtension(new Twig_Extensions_Extension_I18n());
 $twig->addExtension(new Symfony\Bridge\Twig\Extension\RoutingExtension(
     new Twig\Gettext\Routing\Generator\UrlGenerator()
 ));
+$twig->addExtension(new Symfony\Bridge\Twig\Extension\FormExtension(
+    new Symfony\Bridge\Twig\Form\TwigRenderer(
+        new Symfony\Bridge\Twig\Form\TwigRendererEngine()
+    )
+));
+// You can add more extensions here.
 
 array_shift($_SERVER['argv']);
 $addTemplate = false;
