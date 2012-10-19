@@ -26,6 +26,9 @@ $twig = new Twig_Environment(new Twig\Gettext\Loader\Filesystem('/'), array(
     'cache'       => '/tmp/cache/'.uniqid(),
     'auto_reload' => true
 ));
+$twig->addExtension(new Symfony\Bridge\Twig\Extension\TranslationExtension(
+    new Symfony\Component\Translation\Translator(null)
+));
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
 $twig->addExtension(new Symfony\Bridge\Twig\Extension\RoutingExtension(
     new Twig\Gettext\Routing\Generator\UrlGenerator()
