@@ -25,7 +25,7 @@ class Filesystem extends \Twig_Loader_Filesystem
      */
     protected function findTemplate($name)
     {
-         // normalize name
+        // normalize name
         $name = preg_replace('#/{2,}#', '/', strtr($name, '\\', '/'));
 
         if (isset($this->cache[$name])) {
@@ -34,18 +34,25 @@ class Filesystem extends \Twig_Loader_Filesystem
 
         $this->validateName($name);
 
-        foreach ($this->paths as $path) {
-            if (is_file($path.'/'.$name)) {
-                return $this->cache[$name] = $path.'/'.$name;
-            } elseif (is_file($name)) {
-                return $this->cache[$name] = $name;
+        $namespace = '__main__';
+        if (isset($name[0]) && '@' == $name[0]) {
+            if (false === $pos = strpos($name, '/')) {
+                throw new \InvalidArgumentException(sprintf('Malformed namespaced template name "%s" (expecting "@namespace/template_name").', $name));
             }
+
+            $namespace = substr($name, 1, $pos - 1);
+
+            $name = substr($name, $pos + 1);
         }
 
-        if (empty($this->cache)) {
-            throw new \Twig_Error_Loader(sprintf('Unable to find template "%s" (looked into: %s).', $name, json_encode($this->paths)));
-        } else {
-            return array_pop($this->cache);
+        if (!isset($this->paths[$namespace])) {
+            throw new \Twig_Error_Loader(sprintf('There are no registered paths for namespace "%s".', $namespace));
         }
+
+        if (is_file($name)) {
+            return $this->cache[$name] = $name;
+        }
+
+        return __DIR__.'/../Test/Fixtures/twig/empty.twig';
     }
 }
