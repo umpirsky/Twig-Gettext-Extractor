@@ -43,7 +43,7 @@ class Filesystem extends \Twig_Loader_Filesystem
         }
 
         if (empty($this->cache)) {
-            throw new \Twig_Error_Loader(sprintf('Unable to find template "%s" (looked into: %s).', $name, implode(', ', $this->paths)));
+            throw new \Twig_Error_Loader(sprintf('Unable to find template "%s" (looked into: %s).', $name, implode(', ', array_values($this->paths))));
         } else {
             return array_pop($this->cache);
         }
