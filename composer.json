@@ -13,10 +13,11 @@
         "php":                 ">=5.3.3",
         "twig/twig":           ">=1.2.0,<2.0-dev",
         "twig/extensions":     "1.0.*",
-        "symfony/twig-bridge": "2.1.*",
-        "symfony/routing":     "2.1.*",
-        "symfony/filesystem":  "2.1.*",
-        "symfony/translation": "2.1.*"
+        "symfony/twig-bridge": ">=2.0,<3.0",
+        "symfony/routing":     ">=2.0,<3.0",
+        "symfony/filesystem":  ">=2.0,<3.0",
+        "symfony/translation": ">=2.0,<3.0",
+        "symfony/form":        ">=2.0,<3.0"
     },
     "require-dev": {
         "symfony/config":      "2.1.*"
