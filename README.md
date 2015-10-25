@@ -9,12 +9,8 @@ friendly tool which extracts translations from twig templates.
 The recommended way to install Twig Gettext Extractor is through
 [composer](http://getcomposer.org).
 
-```json
-{
-    "require": {
-        "umpirsky/twig-gettext-extractor": "1.1.*"
-    }
-}
+```
+$ composer require umpirsky/twig-gettext-extractor
 ```
 
 ## Setup
