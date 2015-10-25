@@ -3,7 +3,7 @@
 /**
  * This file is part of the Twig Gettext utility.
  *
- *  (c) Саша Стаменковић <umpirsky@gmail.com>
+ *  (c) Saša Stamenković <umpirsky@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,7 +16,7 @@ use Symfony\Component\Filesystem\Filesystem;
 /**
  * Extracts translations from twig templates.
  *
- * @author Саша Стаменковић <umpirsky@gmail.com>
+ * @author Saša Stamenković <umpirsky@gmail.com>
  */
 class Extractor
 {
@@ -70,8 +70,8 @@ class Extractor
     public function extract()
     {
         $command = 'xgettext';
-        $command .= ' '.join(' ', $this->parameters);
-        $command .= ' '.join(' ', $this->templates);
+        $command .= ' '.implode(' ', $this->parameters);
+        $command .= ' '.implode(' ', $this->templates);
 
         $error = 0;
         $output = system($command, $error);

@@ -46,15 +46,3 @@ Now you may add your custom extensions [here](https://github.com/umpirsky/Twig-G
 $twig->addFunction(new \Twig_SimpleFunction('myCustomExtension', true));
 $twig->addFunction(new \Twig_SimpleFunction('myCustomExtension2', true));
 ```
-
-## Tests
-
-To run the test suite, you need [composer](http://getcomposer.org) and
-[PHPUnit](https://github.com/sebastianbergmann/phpunit).
-
-    $ composer install --dev
-    $ phpunit
-
-## License
-
-Twig Gettext Extractor is licensed under the MIT license.
