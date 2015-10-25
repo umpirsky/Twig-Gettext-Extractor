@@ -13,17 +13,21 @@
         "php":                 ">=5.3.3",
         "twig/twig":           "~1.2",
         "twig/extensions":     "~1.0",
-        "symfony/twig-bridge": "~2.0",
-        "symfony/routing":     "~2.0",
-        "symfony/filesystem":  "~2.0",
-        "symfony/translation": "~2.0",
-        "symfony/form":        "~2.0"
+        "symfony/twig-bridge": "~2.7",
+        "symfony/routing":     "~2.7",
+        "symfony/filesystem":  "~2.7",
+        "symfony/translation": "~2.7",
+        "symfony/form":        "~2.7"
     },
     "require-dev": {
-        "symfony/config":      "2.1.*"
+        "symfony/config":      "~2.7",
+        "phpunit/phpunit":     "~4.8"
     },
     "autoload": {
         "psr-0": { "Twig\\Gettext": "." }
     },
-    "bin": ["twig-gettext-extractor"]
+    "bin": ["twig-gettext-extractor"],
+    "config": {
+        "bin-dir": "bin"
+    }
 }
