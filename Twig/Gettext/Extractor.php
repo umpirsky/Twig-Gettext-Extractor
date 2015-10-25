@@ -70,8 +70,8 @@ class Extractor
     public function extract()
     {
         $command = 'xgettext';
-        $command .= ' '.join(' ', $this->parameters);
-        $command .= ' '.join(' ', $this->templates);
+        $command .= ' '.implode(' ', $this->parameters);
+        $command .= ' '.implode(' ', $this->templates);
 
         $error = 0;
         $output = system($command, $error);

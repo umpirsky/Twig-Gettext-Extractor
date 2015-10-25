@@ -33,8 +33,8 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->twig = new \Twig_Environment(new Filesystem('/'), array(
-            'cache'       => '/tmp/cache/'.uniqid(),
-            'auto_reload' => true
+            'cache' => '/tmp/cache/'.uniqid(),
+            'auto_reload' => true,
         ));
         $this->twig->addExtension(new \Twig_Extensions_Extension_I18n());
 
