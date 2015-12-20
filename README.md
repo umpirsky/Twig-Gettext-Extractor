@@ -6,12 +6,44 @@ friendly tool which extracts translations from twig templates.
 
 ## Installation
 
-The recommended way to install Twig Gettext Extractor is through
-[composer](http://getcomposer.org).
+### Manual
 
+#### Local
+
+Download the ``twig-gettext-extractor.phar`` file and store it somewhere on your computer.
+
+#### Global
+
+You can run these commands to easily access ``twig-gettext-extractor`` from anywhere on
+your system:
+
+```bash
+$ sudo wget https://github.com/umpirsky/Twig-Gettext-Extractor/releases/download/1.2.0/twig-gettext-extractor.phar -O /usr/local/bin/twig-gettext-extractor
+$ sudo chmod a+x /usr/local/bin/twig-gettext-extractor
 ```
+Then, just run ``twig-gettext-extractor``.
+
+### Composer
+
+#### Local
+
+```bash
 $ composer require umpirsky/twig-gettext-extractor
 ```
+
+#### Global
+
+```bash
+$ composer global require umpirsky/twig-gettext-extractor
+```
+
+Make sure you have ``~/.composer/vendor/bin`` in your ``PATH`` and
+you're good to go:
+
+```bash
+$ export PATH="$PATH:$HOME/.composer/vendor/bin"
+```
+Don't forget to add this line in your `.bashrc` file if you want to keep this change after reboot.
 
 ## Setup
 

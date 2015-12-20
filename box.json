@@ -1,0 +1,23 @@
+{
+    "directories": ["."],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                ".gitignore",
+                ".md",
+                "phpunit"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "compactors": [
+        "Herrera\\Box\\Compactor\\Json",
+        "Herrera\\Box\\Compactor\\Php"
+    ],
+    "compression": "GZ",
+    "main": "twig-gettext-extractor",
+    "output": "twig-gettext-extractor.phar",
+    "stub": true,
+    "chmod": "0755"
+}
