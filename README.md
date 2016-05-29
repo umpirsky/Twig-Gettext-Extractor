@@ -72,7 +72,7 @@ with the following options:
 - Language: `Twig`
 - List of extensions: `*.twig`
 - Invocation:
-    - Parser command: `<project>/vendor/bin/twig-gettext-extractor --sort-output --force-po -o %o %C %K -L PHP --files %F`
+    - Parser command: `<project>/vendor/bin/twig-gettext-extractor --sort-output --force-po -o %o %C %K -L PHP --files %F` (replace `<project>` with absolute path to your project)
     - An item in keyword list: `-k%k`
     - An item in input file list: `%f`
     - Source code charset: `--from-code=%c`
