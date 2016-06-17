@@ -10,17 +10,17 @@
         }
     ],
     "require": {
-        "php":                 ">=5.3.3",
+        "php":                 ">=5.5.9",
         "twig/twig":           "~1.2",
         "twig/extensions":     "~1.0",
-        "symfony/twig-bridge": "~2.7",
-        "symfony/routing":     "~2.7",
-        "symfony/filesystem":  "~2.7",
-        "symfony/translation": "~2.7",
-        "symfony/form":        "~2.7"
+        "symfony/twig-bridge": "~3.0",
+        "symfony/routing":     "~3.0",
+        "symfony/filesystem":  "~3.0",
+        "symfony/translation": "~3.0",
+        "symfony/form":        "~3.0"
     },
     "require-dev": {
-        "symfony/config":      "~2.7",
+        "symfony/config":      "~3.0",
         "phpunit/phpunit":     "~4.8"
     },
     "autoload": {
