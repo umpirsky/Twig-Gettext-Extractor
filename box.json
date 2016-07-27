@@ -6,7 +6,10 @@
             "exclude": [
                 ".gitignore",
                 ".md",
-                "phpunit"
+                "phpunit",
+                "Tests",
+                "tests",
+                "yaml"
             ],
             "in": "vendor"
         }
