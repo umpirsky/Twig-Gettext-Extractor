@@ -38,6 +38,9 @@ $twig->addExtension(new Symfony\Bridge\Twig\Extension\FormExtension(
         new Symfony\Bridge\Twig\Form\TwigRendererEngine()
     )
 ));
+$twig->addExtension(new Symfony\Bridge\Twig\Extension\AssetExtension( 
+    new Symfony\Component\Asset\Packages()
+));
 // You can add more extensions here.
 
 array_shift($_SERVER['argv']);

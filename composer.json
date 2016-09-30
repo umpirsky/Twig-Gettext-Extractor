@@ -17,7 +17,8 @@
         "symfony/routing":     "~3.0",
         "symfony/filesystem":  "~3.0",
         "symfony/translation": "~3.0",
-        "symfony/form":        "~3.0"
+        "symfony/form":        "~3.0",
+        "symfony/asset": "~2.8|~3.0"
     },
     "require-dev": {
         "symfony/config":      "~3.0",
