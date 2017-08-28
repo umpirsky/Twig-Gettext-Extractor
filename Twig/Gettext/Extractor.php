@@ -26,13 +26,6 @@ class Extractor
     protected $environment;
 
     /**
-     * Template cached file names.
-     *
-     * @var string[]
-     */
-    protected $templates;
-
-    /**
      * Gettext parameters.
      *
      * @var string[]
@@ -47,14 +40,12 @@ class Extractor
 
     protected function reset()
     {
-        $this->templates = array();
         $this->parameters = array();
     }
 
     public function addTemplate($path)
     {
         $this->environment->loadTemplate($path);
-        $this->templates[] = $this->environment->getCacheFilename($path);
     }
 
     public function addGettextParameter($parameter)
@@ -71,7 +62,7 @@ class Extractor
     {
         $command = 'xgettext';
         $command .= ' '.implode(' ', $this->parameters);
-        $command .= ' '.implode(' ', $this->templates);
+        $command .= ' ' . $this->environment->getCache() . '/*/*.php';
 
         $error = 0;
         $output = system($command, $error);

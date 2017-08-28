@@ -18,7 +18,7 @@ use Symfony\Component\Translation\Loader\PoFileLoader;
 /**
  * @author Saša Stamenković <umpirsky@gmail.com>
  */
-class ExtractorTest extends \PHPUnit_Framework_TestCase
+class ExtractorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Twig_Environment
@@ -32,7 +32,9 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->twig = new \Twig_Environment(new Filesystem('/'), array(
+        $filesystem = new Filesystem('/', __DIR__.'/Fixtures/twig');
+        $filesystem->prependPath(__DIR__.'/Fixtures/twig');
+        $this->twig = new \Twig_Environment($filesystem, array(
             'cache' => '/tmp/cache/'.uniqid(),
             'auto_reload' => true,
         ));
@@ -42,7 +44,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider testExtractDataProvider
+     * @dataProvider extractDataProvider
      */
     public function testExtract(array $templates, array $parameters, array $messages)
     {
@@ -67,13 +69,13 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testExtractDataProvider()
+    public function extractDataProvider()
     {
         return array(
             array(
                 array(
-                    __DIR__.'/Fixtures/twig/singular.twig',
-                    __DIR__.'/Fixtures/twig/plural.twig',
+                    '/singular.twig',
+                    '/plural.twig',
                 ),
                 $this->getGettextParameters(),
                 array(
@@ -90,7 +92,7 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
     {
         $extractor = new Extractor($this->twig);
 
-        $extractor->addTemplate(__DIR__.'/Fixtures/twig/empty.twig');
+        $extractor->addTemplate('/empty.twig');
         $extractor->setGettextParameters($this->getGettextParameters());
 
         $extractor->extract();
