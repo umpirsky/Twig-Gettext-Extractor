@@ -32,15 +32,26 @@ class Extractor
      */
     protected $parameters;
 
+
+    private $executable;
+
     public function __construct(\Twig_Environment $environment)
     {
         $this->environment = $environment;
         $this->reset();
     }
 
+    /**
+     * @param mixed $executable
+     */
+    public function setExecutable($executable)
+    {
+        $this->executable = $executable;
+    }
+
     protected function reset()
     {
-        $this->parameters = array();
+        $this->parameters = [];
     }
 
     public function addTemplate($path)
@@ -60,8 +71,8 @@ class Extractor
 
     public function extract()
     {
-        $command = 'xgettext';
-        $command .= ' '.implode(' ', $this->parameters);
+        $command = $this->executable ?: 'xgettext';
+        $command .= ' ' . implode(' ', $this->parameters);
         $command .= ' ' . $this->environment->getCache() . '/*/*.php';
 
         $error = 0;

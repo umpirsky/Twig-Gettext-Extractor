@@ -92,3 +92,16 @@ Now you may add your custom extensions [here](https://github.com/umpirsky/Twig-G
 $twig->addFunction(new \Twig_SimpleFunction('myCustomExtension', true));
 $twig->addFunction(new \Twig_SimpleFunction('myCustomExtension2', true));
 ```
+
+## Command Line Arguments
+
+You can also specify custom extensions and filters via command line, by adding the --functions and --filters arguments, e.g.:
+```
+--functions formRow,formElement --filters localizedCurrency
+``` 
+
+You can specify an unlimited amount of comma-separated function and filter names.
+
+
+
+

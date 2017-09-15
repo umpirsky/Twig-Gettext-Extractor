@@ -1,0 +1,6 @@
+Welcome {{ first_name }}!
+
+token:
+{{ serverUrl() ~ url('verify_email') ~ email_verify_token }}!
+
+<p>link: {{ serverUrl() ~ url('login') }}</p>
