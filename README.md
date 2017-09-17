@@ -102,6 +102,11 @@ You can also specify custom extensions and filters via command line, by adding t
 
 You can specify an unlimited amount of comma-separated function and filter names.
 
+Similarly, you can specify the location of the gettext executable you want to use with --exec
+```
+--exec /usr/local/bin/xgettext
+```
+
 
 
 
