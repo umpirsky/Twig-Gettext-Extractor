@@ -10,19 +10,19 @@
         }
     ],
     "require": {
-        "php":                 ">=5.5.9",
-        "twig/twig":           "~1.23|~2.0",
+        "php":                 "^7.1",
+        "twig/twig":           "^2.0",
         "twig/extensions":     "~1.0",
-        "symfony/twig-bridge": "~3.0|~4.0",
-        "symfony/routing":     "~3.0|~4.0",
-        "symfony/filesystem":  "~3.0|~4.0",
-        "symfony/translation": "~3.0|~4.0",
-        "symfony/form":        "~3.0|~4.0",
-        "symfony/asset":  "~2.8|~3.0|~4.0"
+        "symfony/twig-bridge": "^4.0",
+        "symfony/routing":     "^4.0",
+        "symfony/filesystem":  "^4.0",
+        "symfony/translation": "^4.0",
+        "symfony/form":        "^4.0",
+        "symfony/asset":       "^4.0"
     },
     "require-dev": {
-        "symfony/config":      "~3.0|~4.0",
-        "phpunit/phpunit":     "~4.8|~6.0"
+        "symfony/config":      "^4.0",
+        "phpunit/phpunit":     "^6.0"
     },
     "autoload": {
         "psr-0": { "Twig\\Gettext": "." }
